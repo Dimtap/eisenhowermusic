@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import { useContent } from '../context/ContentContext';
 
 const navLinks = [
   { label: 'Home', id: 'home' },
@@ -11,6 +12,7 @@ const navLinks = [
 ];
 
 const Navigation = () => {
+  const { content } = useContent();
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -34,7 +36,7 @@ const Navigation = () => {
         className="bg-[#2d6a27] text-white py-2 border-b-2 border-[#0A0A0A]"
       >
         <p className="text-center text-xs font-bold uppercase tracking-[0.25em] font-heading px-4">
-          Upcoming Event: Leadership Camp &ndash; June 24
+          {content.announcement}
         </p>
       </div>
 

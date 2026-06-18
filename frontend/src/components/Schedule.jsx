@@ -1,32 +1,6 @@
 import React, { useState } from 'react';
 import { Calendar, Clock, MapPin } from 'lucide-react';
-
-const scheduleData = {
-  rehearsals: [
-    { date: 'Jun 24, 2025', time: 'TBD', event: 'Leadership Camp', location: 'Eisenhower High School' },
-    { date: 'Every Tuesday', time: '3:30 PM – 6:00 PM', event: 'Full Band Rehearsal', location: 'EHS Band Room & Field' },
-    { date: 'Every Thursday', time: '3:30 PM – 6:00 PM', event: 'Full Band Rehearsal', location: 'EHS Band Room & Field' },
-    { date: 'Select Saturdays', time: '8:00 AM – 12:00 PM', event: 'Pre-Competition Run-Through', location: 'EHS Field' },
-    { date: 'Aug 4–8, 2025', time: '8:00 AM – 5:00 PM', event: 'Band Camp Week', location: 'Eisenhower High School' },
-    { date: 'Aug 22, 2025', time: '6:00 PM', event: 'Booster Meeting / Parent Night', location: 'EHS Auditorium' },
-  ],
-  games: [
-    { date: 'Sep 5, 2025', time: '7:00 PM', event: 'Home vs. Colton HS', location: 'Eisenhower Stadium' },
-    { date: 'Sep 12, 2025', time: '7:00 PM', event: 'Away @ Fontana HS', location: 'Fontana HS Stadium' },
-    { date: 'Sep 19, 2025', time: '7:00 PM', event: 'Home vs. Bloomington HS', location: 'Eisenhower Stadium' },
-    { date: 'Sep 26, 2025', time: '7:00 PM', event: 'Away @ Cajon HS', location: 'Cajon HS Stadium' },
-    { date: 'Oct 3, 2025', time: '7:00 PM', event: 'Homecoming – Home vs. Pacific HS', location: 'Eisenhower Stadium' },
-    { date: 'Oct 10, 2025', time: '7:00 PM', event: 'Away @ Grand Terrace HS', location: 'Grand Terrace Stadium' },
-    { date: 'Oct 17, 2025', time: '7:00 PM', event: 'Home vs. Rialto HS', location: 'Eisenhower Stadium' },
-  ],
-  competitions: [
-    { date: 'Sep 27, 2025', time: '8:00 AM', event: 'SCSBOA Prelims', location: 'Colton High School' },
-    { date: 'Oct 11, 2025', time: '8:00 AM', event: 'SCSBOA Field Show Invitational', location: 'Victor Valley HS' },
-    { date: 'Oct 25, 2025', time: 'All Day', event: 'SCSBOA Semifinals', location: 'Citrus College, Glendora' },
-    { date: 'Nov 1, 2025', time: 'All Day', event: 'CBA Invitational Championship', location: 'Ayala High School' },
-    { date: 'Nov 8, 2025', time: 'All Day', event: 'CBA State Championship Finals', location: 'TBD' },
-  ],
-};
+import { useContent } from '../context/ContentContext';
 
 const tabs = [
   { id: 'rehearsals', label: 'Rehearsals' },
@@ -36,7 +10,8 @@ const tabs = [
 
 const Schedule = () => {
   const [activeTab, setActiveTab] = useState('rehearsals');
-  const data = scheduleData[activeTab];
+  const { content } = useContent();
+  const data = (content.schedule || {})[activeTab] || [];
 
   return (
     <section

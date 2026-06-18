@@ -1,5 +1,6 @@
 import React from 'react';
 import { Award, Users, Music, MapPin } from 'lucide-react';
+import { useContent } from '../context/ContentContext';
 
 const stats = [
   { value: '65+', label: 'Years of Excellence', icon: Award },
@@ -11,6 +12,9 @@ const stats = [
 const values = ['Discipline', 'Teamwork', 'Excellence', 'Community Pride'];
 
 const About = () => {
+  const { content } = useContent();
+  const about = content.about || {};
+
   return (
     <section
       id="about"
@@ -70,10 +74,7 @@ const About = () => {
                 Our History
               </h3>
               <p className="text-base leading-relaxed text-[#0A0A0A] font-body">
-                The Ike Instrumental Marching Band has been a proud tradition at Eisenhower
-                High School since 1960. For over six decades, we have represented Rialto,
-                California on fields across Southern California, bringing the spirit of
-                excellence and precision to every performance.
+                {about.history}
               </p>
             </div>
 
@@ -82,10 +83,7 @@ const About = () => {
                 Our Mission
               </h3>
               <p className="text-base leading-relaxed text-[#0A0A0A] font-body">
-                We believe that band is more than music — it is a school for life. Our
-                program develops <strong>discipline</strong>, <strong>teamwork</strong>, and
-                a commitment to <strong>musical excellence</strong>. Every student who
-                marches with us learns to show up, work hard, and perform with pride.
+                {about.mission}
               </p>
             </div>
 
@@ -94,9 +92,7 @@ const About = () => {
                 Community Pride
               </h3>
               <p className="text-base leading-relaxed text-[#0A0A0A] font-body">
-                The Ike Marching Band is a cornerstone of the Rialto community. From Friday
-                night football games to regional competitions, we carry the Green and Gold
-                with honor — inspiring students, families, and neighbors alike.
+                {about.community}
               </p>
             </div>
 

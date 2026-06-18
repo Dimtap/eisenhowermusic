@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { Instagram, Mail, MapPin, Send, ExternalLink } from 'lucide-react';
+import { useContent } from '../context/ContentContext';
 
-// Replace with your Formspree form ID from https://formspree.io
-const FORMSPREE_ID = 'xvoeqkry';
+// Formspree form ID
+const FORMSPREE_ID = 'meewbkry';
 
 const Contact = () => {
+  const { content } = useContent();
+  const contactInfo = content.contact || {};
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -74,7 +77,7 @@ const Contact = () => {
                         Email
                       </p>
                       <p className="text-sm font-body text-[#0A0A0A] mt-0.5">
-                        director@eisenhowerhighschool.edu
+                        {contactInfo.directorEmail || 'director@eisenhowerhighschool.edu'}
                       </p>
                     </div>
                   </div>
@@ -222,18 +225,6 @@ const Contact = () => {
                 <Send size={15} />
                 {status === 'loading' ? 'Sending...' : 'Send Message'}
               </button>
-              <p className="text-xs text-[#9CA3AF] font-body">
-                Form powered by Formspree. To activate, sign up at{' '}
-                <a
-                  href="https://formspree.io"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline hover:text-[#2d6a27]"
-                >
-                  formspree.io
-                </a>{' '}
-                and update the FORMSPREE_ID in Contact.jsx.
-              </p>
             </form>
           </div>
         </div>

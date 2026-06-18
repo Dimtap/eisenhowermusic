@@ -1,24 +1,14 @@
 import React from 'react';
 import { Play, Download } from 'lucide-react';
-
-const photos = [
-  { bg: '#2d6a27', label: 'Football Game Performance', span: 'col-span-2' },
-  { bg: '#c8a227', label: 'Competition Day' },
-  { bg: '#1d4a19', label: 'Rehearsal Session' },
-  { bg: '#0A0A0A', label: 'Drumline Feature' },
-  { bg: '#a68620', label: 'Color Guard Performance', span: 'col-span-2' },
-  { bg: '#3a7a33', label: 'Halftime Show' },
-];
-
-const videos = [
-  { bg: '#0A0A0A', label: 'Halftime Show – Homecoming 2024' },
-  { bg: '#1d4a19', label: 'SCSBOA Competition Performance' },
-  { bg: '#0A0A0A', label: 'Full Band Showcase Night' },
-];
+import { useContent } from '../context/ContentContext';
 
 const downloads = ['Show Music (PDF)', 'Drill Charts (PDF)', 'Band Handbook (PDF)'];
 
 const Media = () => {
+  const { content } = useContent();
+  const photos = content.media?.photos || [];
+  const videos = content.media?.videos || [];
+
   return (
     <section
       id="media"
@@ -44,17 +34,28 @@ const Media = () => {
         >
           Photo Gallery
         </h3>
-        <div className="grid grid-cols-3 gap-4 mb-16">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-16">
           {photos.map((photo, i) => (
             <div
               key={i}
               data-testid={`media-photo-${i}`}
-              className={`border-2 border-[#0A0A0A] flex items-center justify-center hover:-translate-y-1 transition-transform duration-300 shadow-[4px_4px_0px_#0A0A0A] cursor-pointer group ${photo.span || ''}`}
-              style={{ backgroundColor: photo.bg, aspectRatio: '4/3' }}
+              className="border-2 border-[#0A0A0A] hover:-translate-y-1 transition-transform duration-300 shadow-[4px_4px_0px_#0A0A0A] cursor-pointer group overflow-hidden"
+              style={{ backgroundColor: photo.color || '#2d6a27', aspectRatio: '4/3' }}
             >
-              <p className="text-white/40 text-xs font-mono uppercase tracking-widest text-center px-4 group-hover:text-white/70 transition-colors">
-                {photo.label}
-              </p>
+              {photo.imageUrl ? (
+                <img
+                  src={photo.imageUrl}
+                  alt={photo.label}
+                  className="w-full h-full object-cover"
+                  onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center">
+                  <p className="text-white/40 text-xs font-mono uppercase tracking-widest text-center px-4 group-hover:text-white/70 transition-colors">
+                    {photo.label}
+                  </p>
+                </div>
+              )}
             </div>
           ))}
         </div>
@@ -72,7 +73,8 @@ const Media = () => {
               key={i}
               data-testid={`media-video-${i}`}
               className="border-2 border-[#0A0A0A] flex flex-col items-center justify-center hover:-translate-y-1 transition-transform duration-300 shadow-[4px_4px_0px_#c8a227] cursor-pointer group"
-              style={{ backgroundColor: video.bg, aspectRatio: '16/9' }}
+              style={{ backgroundColor: video.color || '#0A0A0A', aspectRatio: '16/9' }}
+              onClick={() => video.videoUrl && window.open(video.videoUrl, '_blank')}
             >
               <div className="w-12 h-12 rounded-full border-2 border-white flex items-center justify-center mb-3 group-hover:bg-[#c8a227] group-hover:border-[#c8a227] transition-all duration-200">
                 <Play size={18} className="text-white ml-0.5" />
