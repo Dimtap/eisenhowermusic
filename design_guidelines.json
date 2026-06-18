@@ -1,0 +1,106 @@
+{
+  "theme": "light",
+  "archetype": "Archetype 4: Swiss & High-Contrast (Modified for Athletics/School Pride)",
+  "design_principles": [
+    "Fusion over Imitation: Combine stark, brutalist structural elements with proud, energetic athletic school colors.",
+    "Emotion First: Convey discipline, precision, and excellence. The layout should feel as precise as a marching band formation.",
+    "Zoom in: Use oversized typography for key section headings to create impact.",
+    "Negative Space: Generous padding around the strict grid modules to allow content to breathe.",
+    "Contrast: Employ harsh contrasts—sharp dark borders on white backgrounds with vibrant green and gold accents."
+  ],
+  "colors": {
+    "background": {
+      "default": "#FDFDFD",
+      "alt": "#F3F4F6",
+      "dark": "#0A0A0A"
+    },
+    "text": {
+      "primary": "#0A0A0A",
+      "secondary": "#495057",
+      "inverse": "#FDFDFD"
+    },
+    "brand": {
+      "primary": "#2d6a27",
+      "primary_hover": "#1d4a19",
+      "secondary": "#c8a227",
+      "secondary_hover": "#a68620",
+      "accent": "#0A0A0A"
+    },
+    "border": "#0A0A0A"
+  },
+  "typography": {
+    "fonts": {
+      "heading": "Cabinet Grotesk, sans-serif",
+      "body": "IBM Plex Sans, sans-serif",
+      "mono": "JetBrains Mono, monospace"
+    },
+    "hierarchy": {
+      "h1": "text-5xl sm:text-7xl font-black tracking-tighter uppercase leading-none",
+      "h2": "text-4xl sm:text-5xl font-bold tracking-tight uppercase leading-none",
+      "h3": "text-2xl sm:text-3xl font-bold tracking-tight",
+      "overline": "text-sm font-bold uppercase tracking-[0.2em] text-[#2d6a27]",
+      "body": "text-lg leading-relaxed text-[#0A0A0A]",
+      "small": "text-sm text-[#495057]"
+    }
+  },
+  "layout_and_spacing": {
+    "container": "max-w-7xl mx-auto px-6 sm:px-8 lg:px-12",
+    "section_padding": "py-24 md:py-32",
+    "bento_grid": "grid grid-cols-1 md:grid-cols-4 lg:grid-cols-12 gap-6",
+    "radius": "rounded-none",
+    "surfaces": {
+      "cards": "bg-white border-2 border-[#0A0A0A] p-8 hover:-translate-y-1 transition-transform duration-300 shadow-[6px_6px_0px_#0A0A0A]",
+      "glass": "bg-white/90 backdrop-blur-xl border-b-2 border-[#0A0A0A]",
+      "dark_section": "bg-[#0A0A0A] text-white border-y-2 border-[#0A0A0A]"
+    }
+  },
+  "components": {
+    "navigation": "Sticky top-0 z-50 glass surface. Top bar announcement: bg-[#2d6a27] text-white py-2 text-xs font-bold text-center tracking-[0.2em] uppercase border-b-2 border-[#0A0A0A]. Logo on the left, primary navigation in center, hamburger for mobile.",
+    "buttons": {
+      "primary": "inline-block bg-[#2d6a27] text-white px-8 py-4 font-bold uppercase tracking-[0.1em] border-2 border-[#0A0A0A] hover:bg-[#1d4a19] shadow-[4px_4px_0px_#0A0A0A] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_#0A0A0A] transition-all",
+      "secondary": "inline-block bg-[#c8a227] text-[#0A0A0A] px-8 py-4 font-bold uppercase tracking-[0.1em] border-2 border-[#0A0A0A] shadow-[4px_4px_0px_#0A0A0A] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_#0A0A0A] transition-all"
+    },
+    "schedule_table": "HTML/Tailwind structure. border-collapse w-full. header bg-[#0A0A0A] text-white uppercase font-bold text-left. rows have border-b-2 border-[#0A0A0A]. hover:bg-[#F3F4F6] transition-colors. Padding `p-4` on cells.",
+    "forms": "Input/textarea fields must have border-2 border-[#0A0A0A] bg-white p-4 rounded-none focus:outline-none focus:ring-0 focus:border-[#2d6a27] shadow-[2px_2px_0px_#0A0A0A]. Submit button uses primary style.",
+    "placeholders": "Image blocks MUST use solid backgrounds (e.g., bg-[#2d6a27], bg-[#c8a227], bg-[#0A0A0A]) with border-2 border-[#0A0A0A]. Add an overlay text like 'Media Placeholder' using a monospace font and opacity."
+  },
+  "sections_to_build": [
+    {
+      "name": "Announcement Banner",
+      "instructions": "Full width top banner. Content: 'Leadership Camp – June 24'. Green background, white text."
+    },
+    {
+      "name": "Header",
+      "instructions": "Sticky navigation. Links: About, Schedule, Sections, Media, Contact."
+    },
+    {
+      "name": "Hero",
+      "instructions": "Asymmetrical split. Left: H1 'Ike Instrumental Marching Band', Subtitle 'Rialto, California • Est. 1960'. CTA buttons. Right: Large solid-colored bento grid block serving as a photo placeholder."
+    },
+    {
+      "name": "About",
+      "instructions": "Editorial layout. Bold 'Mission' typography on left, descriptive paragraphs on right emphasizing discipline, teamwork, excellence, and community pride."
+    },
+    {
+      "name": "Schedule",
+      "instructions": "Data-heavy table list. Date, Event, Location, Time. Include placeholder rehearsals, football games, and competitions."
+    },
+    {
+      "name": "Sections",
+      "instructions": "4-Card Bento Grid (Drumline, Brass, Woodwinds, Color Guard). Each card features a distinct solid color accent, bold title, and short descriptive text."
+    },
+    {
+      "name": "Media",
+      "instructions": "Asymmetrical masonry-like grid of solid-color placeholders with borders. Indicate aspect ratios (e.g., 16:9 for videos, 4:3 for gallery)."
+    },
+    {
+      "name": "Contact & Footer",
+      "instructions": "Two columns. Left: Director placeholder info, large @ikeinstrumental Instagram link. Right: Formspree-enabled HTML contact form."
+    }
+  ],
+  "accessibility_and_testing": [
+    "Ensure contrast ratios meet WCAG AA.",
+    "All interactive elements (buttons, links, form fields) MUST have 'data-testid' attributes (e.g., 'data-testid=\"nav-link-schedule\"', 'data-testid=\"contact-submit-button\"').",
+    "Use semantic HTML (header, nav, main, section, footer, article)."
+  ]
+}
