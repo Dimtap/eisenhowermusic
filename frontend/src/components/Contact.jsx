@@ -76,9 +76,6 @@ const Contact = () => {
                       <p className="text-sm font-body text-[#0A0A0A] mt-0.5">
                         director@eisenhowerhighschool.edu
                       </p>
-                      <p className="text-xs text-[#9CA3AF] font-body mt-0.5">
-                        (Placeholder — update with actual email)
-                      </p>
                     </div>
                   </div>
 
